@@ -1,3 +1,6 @@
+## References:
+https://github.com/ChHanXiao/license-plate-recoginition
+
 ## step 1
 `git clone https://github.com/ChHanXiao/license-plate-recoginition.git`
 
