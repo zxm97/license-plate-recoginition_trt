@@ -82,30 +82,6 @@ def postprocess(outputs):
         preb_labels.append(lpnum)
     return preb_labels
 
-def draw_bbox(img_raw, dets):
-    for b in dets:
-        if b[4] < args.vis_thres:
-            continue
-        text = "{:.4f}".format(b[4])
-        print(text)
-        b = list(map(int, b))
-        cv2.rectangle(img_raw, (b[0], b[1]), (b[2], b[3]), (0, 0, 255), 2)
-        cx = b[0]
-        cy = b[1] + 12
-        cv2.putText(img_raw, text, (cx, cy),
-                    cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255))
-
-        # landms
-        cv2.circle(img_raw, (b[5], b[6]), 1, (0, 0, 255), 4)
-        cv2.circle(img_raw, (b[7], b[8]), 1, (0, 255, 255), 4)
-        # cv2.circle(img_raw, (b[9], b[10]), 1, (255, 0, 255), 4)
-        cv2.circle(img_raw, (b[9], b[10]), 1, (0, 255, 0), 4)
-        cv2.circle(img_raw, (b[11], b[12]), 1, (255, 0, 0), 4)
-
-    return img_raw
-
-
-
 def main():
     input_path = args.input_path
     output_shapes = [(1, cfg.T_length, len(cfg.CHARS)),]
